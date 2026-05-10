@@ -253,9 +253,11 @@ ${style}
 
         const data = await response.json();
 
-        const text =
-          data.candidates?.[0]?.content?.parts?.[0]?.text ||
-          "生成失敗。Google可能又在抽風。";
+        console.log("Gemini 回傳：", data);
+
+const text =
+  data.candidates?.[0]?.content?.parts?.[0]?.text ||
+  `生成失敗。Google可能又在抽風。\n\n錯誤資訊：\n${JSON.stringify(data, null, 2)}`;
 
         output.innerText = text;
 
